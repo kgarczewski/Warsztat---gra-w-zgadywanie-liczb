@@ -11,12 +11,13 @@ def get_the_number():
         try:
             user_guess = (input('Guess a number! '))
             user_guess = int(user_guess)
-            if not 100>user_guess>0:
+            if not 100 > user_guess > 0:
                 print("It is not in between 1 and 101!")
-
         except ValueError:
             print("Its not a number!")
             continue
+
+        """Check the number"""
         if user_guess == hidden_number and user_guess in range(1, 101):
             print("You win!")
             break
@@ -24,5 +25,6 @@ def get_the_number():
             print("Too big!")
         if user_guess < hidden_number and user_guess in range(0, 101):
             print("Too small!")
+
 
 get_the_number()
