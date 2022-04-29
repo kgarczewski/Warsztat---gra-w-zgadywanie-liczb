@@ -2,32 +2,27 @@ from random import randint
 
 
 def get_the_number():
-    """Get number from user"""
+
+    hidden_number = randint(1, 101)
+    print("I am thinking of a number between 1 and 100. Can You guess it?")
     while True:
-        user_guess = (input("Guess the number: "))
+
+        """Get number from user"""
         try:
-            result = int(user_guess)
-            break
+            user_guess = (input('Guess a number! '))
+            user_guess = int(user_guess)
+            if not 100>user_guess>0:
+                print("It is not in between 1 and 101!")
 
         except ValueError:
-            print("It's not a number!")
-
-    return result
-
-
-def guess_the_number():
-
-    """Main game function."""
-
-    hidden_number = randint(1, 100)
-    user_number = get_the_number()
-    while user_number != hidden_number:
-        if user_number < hidden_number:
-            print("Too small!")
-        else:
+            print("Its not a number!")
+            continue
+        if user_guess == hidden_number and user_guess in range(1, 101):
+            print("You win!")
+            break
+        if user_guess > hidden_number and user_guess in range(1, 101):
             print("Too big!")
-        user_number = get_the_number()
-    print("You Win!")
+        if user_guess < hidden_number and user_guess in range(0, 101):
+            print("Too small!")
 
-
-guess_the_number()
+get_the_number()
